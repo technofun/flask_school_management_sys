@@ -1,0 +1,15 @@
+{% extends 'boilerplate.html'%}
+
+<div class="container">
+    {% block body %}
+    <div class="jumbotron">
+        <h1>Welcome Admin </h1>
+
+        <button class="btn btn-primary"><a href="/addteacher" class="admin-btn">Add Teacher</a></button>
+        <button class="btn btn-primary"> <a href="/addstudent" class="admin-btn">Add Student</a></button>
+        <button class="btn btn-primary"><a href="/allstudents" class="admin-btn">Show All Students</a></button>
+    </div>
+
+
+    {% endblock %}
+</div>

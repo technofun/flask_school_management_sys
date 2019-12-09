@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>School_M_S</title>
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+        {% block body %}
+        {% endblock %}
+    <div class="container">
+        
+        <div class="jumbotron">
+            <h1>Welcome Teacher </h1>
+
+            <button class="btn btn-primary"><a href="#" class="admin-btn">Student Attendance</a></button>
+
+            <button class="btn btn-primary"><a href="/teacher/students" class="admin-btn">Show All Students</a></button>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+{% extends 'boilerplate.html'%}
+
+{% block body%}
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Name</th>
+
+                <th>e-mail</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{student.userName}}</td>
+
+                <td>{{student.email}}</td>
+                <td>{{student.gender}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

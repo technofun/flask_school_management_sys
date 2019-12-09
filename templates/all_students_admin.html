@@ -1,0 +1,30 @@
+{% extends 'boilerplate.html'%}
+
+{% block body%}
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>roll #</th>
+                <th>Mobile</th>
+                <th>e-mail</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in _students %}
+            <tr >
+                <td>{{student.studentName}}</td>
+                <td>{{student.rollNumber}}</td>
+                <td>{{student.mobile}}</td>
+                <td>{{student.email}}</td>
+                <td>{{student.gender}}</td>
+                <td><a href="/delete/{{student.id}}"><button>Delete</button></a></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

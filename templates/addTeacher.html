@@ -1,0 +1,64 @@
+{% extends 'boilerplate.html'%}
+
+
+{%block head%}
+<title>School-Management-System</title>
+
+<style>
+.form-register {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.form-register .checkbox {
+  font-weight: 400;
+}
+.form-register .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-register .form-control:focus {
+  z-index: 2;
+}
+.form-register input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-register input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+</style>
+{% endblock %}
+
+{% block body%}
+<h1>i am Admin</h1>
+<form  class="form-register" action="/admin/addTeacher" method="POST">
+    <h2>Add Teacher</h2>
+<input type="text"  class="form-control" name="Username" placeholder="UserName" required><br>
+<input type="text"  class="form-control" name="cell_no" maxlength="11"placeholder="Mobile Phone" required><br>
+<input type="email" class="form-control" name="email" placeholder="E-mail" required><br>
+<input type="password" class="form-control" name="password" placeholder="Password" required><br>
+<div class="form-check form-check-inline">
+<label for="male" class="form-check-label">Male_ </label>
+<input  class="form-check-input" type="radio" name="gender" value="male">
+<label for="female"  class="form-check-label">Female_ </label>
+<input type="radio" class="form-check-input" name="gender" value="female">
+</div><br>
+<select name="role">
+<option value="Teacher">Teacher</option>
+<option value="Student">Student</option>
+</select>
+
+<br><br>
+<button class="btn btn-primary" type="submit">Add Teacher</button>
+</form>
+
+{% endblock%}
