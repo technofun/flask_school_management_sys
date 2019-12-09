@@ -29,6 +29,7 @@ class Users(db.Model):
     gender = db.Column(db.String(10))
     joining_date = db.Column(db.DateTime, default=datetime.utcnow)
 
+
 class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True)
     studentName = db.Column(db.String(30), unique=False, nullable=False)
@@ -39,12 +40,6 @@ class Student(db.Model):
     gender = db.Column(db.String(10))
     joining_date = db.Column(db.DateTime, default=datetime.utcnow)
 
-# class Admin(db.Model):
-#     email = db.Column(db.String(120), primary_key=True, unique=True)
-#     password = db.Column(db.String(20), unique=True, nullable=False)
-
-    # def __repr__(self):
-    #     return '<User %r>' % self.id
 # db.create_all()
 
 @app.route('/', methods=['GET', 'POST'])
@@ -63,39 +58,6 @@ def before_request():
     g.admin = None
     if 'admin' in session:
         g.admin = session['admin']
-
-
-# @app.route('/admin', methods=['GET', 'POST'])
-# def adminLogin():
-#     if request.method == 'POST':
-#         # adminUser = Admin.query.order_by(Admin.email).all()
-#         # try:
-#         #     if adminUser.email == 'admin@123.com' and adminUser.password == 'admin1234':
-#         #         return redirect('/register')
-#         #     else:
-#         #         return 'incorrect pass'
-
-#         # except:
-#         #     return 'METHOD NOT POST'
-
-#         # return redirect('/register')
-#         # myadmin = Admin()
-#         adminemail = request.form['login_email']
-#         adminpassword = request.form['login_password']
-
-#         # try:
-#         # db.session.add(myadmin)
-#         # db.session.commit()
-#         # adminUser = Admin.query.order_by(Admin.email).first()
-#         if adminemail == 'admin@123.com' and adminpassword == 'admin':
-#             return redirect('/register')
-#         # except:
-#         #     return 'you are not Admin'
-
-#         else:
-#             return redirect('/')
-
-#         return 'method is not post 2ND'
 
 
 @app.route('/addteacher')
@@ -129,6 +91,7 @@ def teacher():
 def allStudents():
     _students = Student.query.order_by(Student.id).all()
     return render_template('all_students_admin.html', _students=_students)
+
 
 @app.route('/allteachers')
 def allTeachers():
@@ -192,6 +155,7 @@ def deleteStudent(id):
         return redirect('/allstudents')
     except:
         return 'user cant delete'
+
 
 @app.route('/teacher/delete/<int:id>')
 def deletTeacher(id):
