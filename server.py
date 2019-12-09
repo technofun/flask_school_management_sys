@@ -39,12 +39,12 @@ class Student(db.Model):
     gender = db.Column(db.String(10))
     joining_date = db.Column(db.DateTime, default=datetime.utcnow)
 
-class Admin(db.Model):
-    email = db.Column(db.String(120), primary_key=True, unique=True)
-    password = db.Column(db.String(20), unique=True, nullable=False)
+# class Admin(db.Model):
+#     email = db.Column(db.String(120), primary_key=True, unique=True)
+#     password = db.Column(db.String(20), unique=True, nullable=False)
 
-    def __repr__(self):
-        return '<User %r>' % self.id
+    # def __repr__(self):
+    #     return '<User %r>' % self.id
 # db.create_all()
 
 @app.route('/', methods=['GET', 'POST'])
@@ -185,23 +185,23 @@ def allstudents():
 #  --------------delete the user---------
 @app.route('/delete/<int:id>')
 def deleteStudent(id):
-    user_to_delete = Student.query.get_or_404(id)
+    student_to_delete = Student.query.get_or_404(id)
     try:
-        db.session.delete(user_to_delete)
+        db.session.delete(student_to_delete)
         db.session.commit()
         return redirect('/allstudents')
     except:
         return 'user cant delete'
 
-@app.route('/delete/<int:id>')
+@app.route('/teacher/delete/<int:id>')
 def deletTeacher(id):
-    user_to_delete = Users.query.get_or_404(id)
+    teacher_to_delete = Users.query.get_or_404(id)
     try:
-        db.session.delete(user_to_delete)
+        db.session.delete(teacher_to_delete)
         db.session.commit()
         return redirect('/allteachers')
     except:
-        return 'user cant delete'
+        return 'teacher cant delete'
 
 
 if __name__ == '__main__':
